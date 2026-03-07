@@ -1,4 +1,4 @@
-package com.lsl.chatbot.interfacces.test;
+package com.lsl.chatbot.test;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;

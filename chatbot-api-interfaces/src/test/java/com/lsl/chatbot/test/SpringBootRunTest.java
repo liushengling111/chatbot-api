@@ -1,4 +1,4 @@
-package com.lsl.chatbot.interfacces.test;
+package com.lsl.chatbot.test;
 
 import com.alibaba.fastjson.JSON;
 import com.lsl.chatbot.domain.IZsxqApi;
