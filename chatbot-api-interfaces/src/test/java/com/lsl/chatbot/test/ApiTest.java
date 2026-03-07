@@ -12,7 +12,6 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.net.http.HttpClient;
 
 
 /**
