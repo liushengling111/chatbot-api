@@ -63,4 +63,35 @@ public class ApiTest {
                         System.out.println(response.getStatusLine().getStatusCode());
                 }
         }
+        @Test
+        public void test_OpenAi() throws IOException {
+                CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+                HttpPost post = new HttpPost("https://open.bigmodel.cn/api/paas/v4/chat/completions");
+                post.addHeader("Authorization", "Bearer af389e3bb12946a58b08ab0f9bca63d9.qOTRPTEMP1wD35E8");
+                post.addHeader("Content-Type","application/json;charset=utf8");
+                String paramJson = "{\n" +
+                        "    \"model\": \"glm-5\",\n" +
+                        "    \"messages\": [\n" +
+                        "        {\n" +
+                        "            \"role\": \"system\",\n" +
+                        "            \"content\": \"你是一个有用的AI助手。\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"role\": \"user\",\n" +
+                        "            \"content\": \"你好，帮我写一个冒泡排序。\"\n" +
+                        "        }\n" +
+                        "    ],\n" +
+                        "    \"temperature\": 1.0,\n" +
+                        "    \"stream\": false\n" +
+                        "}";
+                StringEntity entity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
+                post.setEntity(entity);
+                CloseableHttpResponse response = httpClient.execute(post);
+                if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+                        String res = EntityUtils.toString(response.getEntity());
+                        System.out.println("完整响应：" + res);
+                }else {
+                        System.out.println("错误码：" + response.getStatusLine().getStatusCode());
+                }
+        }
 }

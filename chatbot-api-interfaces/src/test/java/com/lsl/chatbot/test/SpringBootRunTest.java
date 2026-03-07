@@ -2,6 +2,7 @@ package com.lsl.chatbot.test;
 
 import com.alibaba.fastjson.JSON;
 import com.lsl.chatbot.domain.IZsxqApi;
+import com.lsl.chatbot.domain.ai.IChatGPtApi;
 import com.lsl.chatbot.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import com.lsl.chatbot.domain.zsxq.model.vo.Topics;
 import com.lsl.chatbot.domain.zsxq.service.ZsxqApi;
@@ -32,7 +33,8 @@ public class SpringBootRunTest {
     private String cookie;
     @Resource
     private IZsxqApi zsxqApi;
-
+    @Resource
+    private IChatGPtApi chatGPtApi;
     @Test
     public void test_zsxqApi() throws IOException {
         UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = zsxqApi.queryUnAnsweredQuestionsTopicId(groupId, cookie);
@@ -46,6 +48,11 @@ public class SpringBootRunTest {
           // 回答问题
             zsxqApi.answer(groupId, cookie, topicId, text, false);
         }
+    }
+    @Test
+    public void test_OpenAi() throws IOException {
+        String answer = chatGPtApi.doOpenAi("帮我写一个冒泡排序");
+        log.info("测试结果：{}", answer);
     }
 
 }
