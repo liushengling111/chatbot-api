@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description
  * @create 2026/3/6 12:44
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.lsl.chatbot.interfaces", "com.lsl.chatbot.domain"})
 public class ApiApplication {
 
     public static void main(String[] args) {
