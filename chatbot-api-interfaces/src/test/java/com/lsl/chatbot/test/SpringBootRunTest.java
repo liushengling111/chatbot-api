@@ -51,7 +51,7 @@ public class SpringBootRunTest {
     }
     @Test
     public void test_OpenAi() throws IOException {
-        String answer = chatGPtApi.doOpenAi("帮我写一个冒泡排序");
+        String answer = chatGPtApi.doOpenAi("用java帮我写一个冒泡排序");
         log.info("测试结果：{}", answer);
     }
 
